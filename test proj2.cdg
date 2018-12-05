@@ -2,18 +2,17 @@
 
 <ClassDiagram name="test proj">
   <ClassDiagramComponents>
-    <Class name="Admin" package="" visibility="public" xPosition="1156.0" yPosition="113.0">
+    <Class name="Admin" package="" visibility="public" xPosition="363.0" yPosition="363.0">
       <Fields/>
       <Constructors/>
       <Methods>
-        <Method name="Alter" returnType="String" visibility="public">
+        <Method name="Alter" returnType="void" visibility="public">
           <Argument type="String" name="username"/>
           <Argument type="String" name="PassWord"/>
         </Method>
-        <Method name="Search" returnType="String" visibility="public">
+        <Method name="Search" returnType="SystemUser" visibility="public">
           <Argument type="String" name="ID"/>
         </Method>
-        <Method name="untitledMethod" returnType="void" visibility="public"/>
         <Method name="Signup" returnType="String" visibility="public">
           <Argument type="String" name="UserName"/>
           <Argument type="String" name="Password"/>
@@ -21,22 +20,52 @@
           <Argument type="String" name="LName"/>
           <Argument type="String" name="email"/>
         </Method>
+        <Method name="assign" returnType="void" visibility="public">
+          <Argument type="Student" name="x"/>
+          <Argument type="Lecturer" name="y"/>
+          <Argument type="Subjects" name="subject"/>
+        </Method>
       </Methods>
     </Class>
-    <Class name="Lecturer" package="" visibility="public" xPosition="1689.0" yPosition="1578.0">
-      <Fields/>
+    <Class name="Lecturer" package="" visibility="public" xPosition="1657.0" yPosition="363.0">
+      <Fields>
+        <Field name="teached_subjects" type="string&lt;ArrayList&gt;" visibility="private"/>
+      </Fields>
       <Constructors/>
       <Methods>
         <Method name="assign_single_q" returnType="void" visibility="public">
-          <Argument type="sudent" name="array"/>
+          <Argument type="student" name="array"/>
+          <Argument type="exams" name="answers"/>
         </Method>
-        <Method name="studentdata" returnType="void" visibility="public">
+        <Method name="reports" returnType="void" visibility="public">
           <Argument type="student" name="array"/>
         </Method>
         <Method name="assign_student_degree" returnType="void" visibility="public"/>
+        <Method name="addlecturer" returnType="boolean" visibility="public"/>
+        <Method name="lecturer" returnType="lec" visibility="public">
+          <Argument type="string" name="username"/>
+          <Argument type="string" name="pass"/>
+          <Argument type="int" name="id"/>
+          <Argument type="string" name="fname"/>
+          <Argument type="string" name="lname"/>
+          <Argument type="string" name="email"/>
+        </Method>
+        <Method name="l" returnType="lecturer" visibility="public"/>
+        <Method name="toString" returnType="string" visibility="public"/>
+        <Method name="loadAUX" returnType="void" visibility="private"/>
+        <Method name="getDateAUX" returnType="String" visibility="private"/>
+        <Method name="getterAUX" returnType="int" visibility="private"/>
+        <Method name="updateAUX" returnType="void" visibility="private"/>
+        <Method name="list_lecturerdata" returnType="string" visibility="public"/>
+        <Method name="update_lectueredata" returnType="void" visibility="public"/>
+        <Method name="delete_lecturerdata" returnType="void" visibility="public"/>
+        <Method name="getTeached_subjects" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="setTeached_subjects" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;String&gt;" name="teached_subjects"/>
+        </Method>
       </Methods>
     </Class>
-    <Class name="Subjects" package="" visibility="public" xPosition="1900.0" yPosition="1000.0">
+    <Class name="Subjects" package="" visibility="public" xPosition="999.0" yPosition="100.0">
       <Fields>
         <Field name="AccessCode" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -53,10 +82,10 @@
         <Method name="get_name" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="SystemUser" package="" visibility="public" xPosition="550.0" yPosition="1779.0">
+    <Class name="SystemUser" package="" visibility="public" xPosition="1898.0" yPosition="1000.0">
       <Fields>
         <Field name="UserName" type="String" visibility="protected"/>
-        <Field name="PassWord" type="String" visibility="protected"/>
+        <Field name="PassWord" type="String" visibility="private"/>
         <Field name="FName" type="String" visibility="protected"/>
         <Field name="LName" type="String" visibility="protected"/>
         <Field name="email" type="Stirng" visibility="protected"/>
@@ -70,54 +99,46 @@
         </Method>
         <Method name="Logout" returnType="void" visibility="public"/>
         <Method name="update" returnType="void" visibility="public"/>
-        <Method name="forgetpassword" returnType="string" visibility="public">
-          <Argument type="string" name="PassWord"/>
-        </Method>
       </Methods>
     </Class>
-    <Class name="exams" package="" visibility="public" xPosition="1156.0" yPosition="1874.0">
+    <Class name="exams" package="" visibility="public" xPosition="363.0" yPosition="1636.0">
       <Fields>
         <Field name="date" type="String" visibility="private"/>
         <Field name="duration" type="double" visibility="private"/>
         <Field name="degree" type="arraylist&lt;string&gt;" visibility="private"/>
+        <Field name="student_answers" type="string[]" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
         <Method name="calculate" returnType="void" visibility="public">
           <Argument type="Examdata" name="x"/>
           <Argument type="student" name="y"/>
-          <Argument type="string" name="questiontype"/>
+          <Argument type="string" name="student_answers"/>
         </Method>
+        <Method name="set_date" returnType="void" visibility="public"/>
+        <Method name="set_duration" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Student" package="" visibility="public" xPosition="549.0" yPosition="220.0">
+    <Class name="Student" package="" visibility="public" xPosition="1636.0" yPosition="1636.0">
       <Fields>
         <Field name="times_exams" type="int" visibility="private"/>
         <Field name="arrayforsubjects" type="string" visibility="private"/>
-        <Field name="degrees" type="string[]" visibility="private"/>
+        <Field name="degrees_for_each_question" type="string[]" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
         <Method name="print" returnType="exams" visibility="public"/>
-        <Method name="see_degree_corre" returnType="subject" visibility="public">
+        <Method name="see_degree_corrected" returnType="subject" visibility="public">
           <Argument type="subject" name="name"/>
         </Method>
         <Method name="access" returnType="exams" visibility="public"/>
       </Methods>
     </Class>
-    <Interface name="Manage" package="" visibility="public" xPosition="1689.0" yPosition="421.0">
-      <Methods>
-        <Method name="Add" returnType="void" visibility="public"/>
-        <Method name="Delete" returnType="void" visibility="public"/>
-        <Method name="Update" returnType="void" visibility="public"/>
-        <Method name="list" returnType="void" visibility="public"/>
-      </Methods>
-    </Interface>
-    <Class name="ExamData" package="" visibility="public" xPosition="154.0" yPosition="692.0">
+    <Class name="ExamData" package="" visibility="public" xPosition="100.0" yPosition="1000.0">
       <Fields>
-        <Field name="question" type="string" visibility="private"/>
-        <Field name="answerarray" type="string" visibility="private"/>
-        <Field name="questiontype" type="string" visibility="private"/>
+        <Field name="question" type="string" visibility="protected"/>
+        <Field name="lecturer_answer" type="string" visibility="protected"/>
+        <Field name="questiontype" type="string" visibility="protected"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -127,19 +148,17 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="assign" source="Student" target="Lecturer" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Lecturer" target="Manage"/>
-    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="SystemUser" target="Manage"/>
-    <HasRelation name="has" source="ExamData" target="exams" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Student" target="exams" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="Has" source="Subjects" target="exams" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Student" target="Subjects" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Admin" target="SystemUser"/>
-    <IsRelation name="is" source="Student" target="SystemUser"/>
-    <UseRelation name="" source="Admin" target="Subjects" sourceCardinality="1..*" targetCardinality="1..1"/>
-    <HasRelation name="has" source="exams" target="Lecturer" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="assign" source="Admin" target="Lecturer" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <HasRelation name="manage exam" source="exams" target="Lecturer" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="has" source="ExamData" target="exams" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Admin" target="Manage"/>
+    <HasRelation name="Has" source="Student" target="Subjects" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Student" target="SystemUser"/>
+    <UseRelation name="assign" source="Admin" target="Student" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Admin" target="Subjects" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Admin" target="SystemUser"/>
+    <UseRelation name="teach" source="Lecturer" target="Subjects" sourceCardinality="1..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="Lecturer" target="SystemUser"/>
-    <HasRelation name="Has" source="Lecturer" target="Subjects" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
   </ClassDiagramRelations>
 </ClassDiagram>
