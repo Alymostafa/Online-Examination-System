@@ -6,7 +6,9 @@
 package system.user;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -16,7 +18,11 @@ public class lecturer extends sy  {
     
     public static ArrayList<lecturer>lecturers =new ArrayList<>();
     static ArrayList<String>teached_subjects = new ArrayList<>();
+    public static ArrayList<student>reports = new ArrayList<>();
+    HashMap<Integer,Integer>map = new HashMap<>();
+    HashMap<Integer,Integer>student_degrees = new HashMap<>();
 
+    Scanner sc = new Scanner(System.in); 
     public static ArrayList<String> getTeached_subjects() {
         return teached_subjects;
     }
@@ -25,10 +31,9 @@ public class lecturer extends sy  {
         lecturer.teached_subjects = teached_subjects;
     }
     private final String lecturerFileName = "lecturer.txt";
+    private final String reportsfilename = "reports.txt";
     
-    public lecturer()
-    {   
- }
+   
     
    public lecturer (String username, String pass, int id, String fname, String lname , String email)
    {
@@ -74,6 +79,27 @@ public class lecturer extends sy  {
 
     }
       
+      private student write_reports_Aux(student x)
+    {
+        map.put(x.id, x.degree);
+        
+       for (int i = 0; i < x.reports.length; i++) {
+	System.out.print("Enter The Report Please : " + (i+1) + " : ");
+        x.reports[i] = sc.nextLine();
+       }  
+       return x;
+       
+    }
+      
+    
+        
+     
+   
+    
+        
+    
+       
+      
       
      //END OF AUX FUNCTIONS SECTION//
      
@@ -105,8 +131,46 @@ public class lecturer extends sy  {
      }
      
      
-       
+    public void addexam(subject x)
+    {
+        x.addexam();
+    }
     
+   
+    
+    
+     
+    /*void student_reports()
+    {
+
+        
+    }*/
+    
+    public void delete_exam(int id , exam l)
+     {
+         l.delete_exam();
+     }
+    
+    public void update_exam(exam l)
+    {
+        l.update_exam();
+    }
+    
+    public void list_exams(exam l)
+    {
+        l.list_exams();   
+    }
+    
+    
+    /* public void Assign_studnet_degree(student x , subject y )
+    {
+        
+     
+    }
+    */
+    
+
+ 
        
      
      
