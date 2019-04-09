@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+import os
+import sys
+myhost = os.uname()[1]
+z=1 
+while z:
+ print ("A. List all the processes in the system.")
+ print ("B. List all the processes grouped by user.")
+ print ("C. Display process ID of all the processes.")
+ print ("D. Run/stop a specific process.")
+ print ("E. Send specific signals to specific process.")
+ print ("0. Exit")
+ print("Please Enter Your Command")
+ x = input()
+
+
+ if x=='a'or x=='A':
+    os.system('top')
+   
+ if x=='b'or x=='B':
+    user = input('type username:\n')
+    os.system('ps -u'+user)
+
+ if x=='C'or x=='c':
+    os.system('pgrep -u'+myhost+' -l')
+ if x=='D' or x=='d':
+    proc = input('type proccess name:\n')
+    os.system('pkill -9 ' + proc)
+
+ if x=='E' or x=='e':
+    print('Choose the number of the signal:')
+    c = open("signal.txt","r")
+    cont = c.read()
+    print(cont)
+    sig = input()
+    pro = input('type process name:\n')
+    os.system('pkill -'+sig+' '+pro)
+ if x =='0':
+    sys.exit()
+
+ else:
+  print("Invalid Choice\n")
